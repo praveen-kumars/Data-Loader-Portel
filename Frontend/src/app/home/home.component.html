@@ -1,0 +1,138 @@
+
+<nav class="navbar navbar-expand-lg bg-success navbar-dark py-3 fixed-top" *ngIf="isAuthenticated">
+        <div class="container">
+            
+            
+            <button class="navbar-toggler" 
+                    type="button" 
+                     data-bs-toggle="collapse"
+                     data-bs-target=".navmenu-collapse">
+                     <span class="navbar-toggler-icon"></span>
+            </button>        
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="nav navbar-nav text-uppercase">
+                    <li class="nav-item" *ngIf="isAuthenticated">
+                        <a routerLink="/portal/Enroll" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Enroll</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isAuthenticated">
+                        <a routerLink="/portal/Updation" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">update</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isAuthenticated">
+                        <a routerLink="/portal/Process" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Process</a>
+                    </li>
+                    
+                </ul>
+                <!-- <a  href="#" class="text-center">Patient Admin Portal</a> -->
+                <ul class="nav navbar-nav   ms-auto">
+                    <li class="nav-item text-white" *ngIf="isAuthenticated" ><a aria-disabled="true" class="nav-link">
+                            {{username}}</a>
+                    </li>
+                    <button class="nav-item rounded-pill py-0 pt-0 my-0 bg-danger" *ngIf="isAuthenticated" (click)="onLogout()"><a class="nav-link">
+                        Logout</a>
+                    </button>
+               
+                </ul>
+              
+            </div>
+        </div>  
+</nav>
+
+
+<!-- showcase -->
+<body class="bg-dark">
+    <section class="bg-dark text-light p-5 text-center">
+    <div class="container"> 
+        <div class=" justify-content-between align-items-center">
+            <div >
+                <h1><span class="text-warning">Welcome to</span></h1>
+                <h1><span class="text-warning">Data Loader Portal</span></h1>
+                <p class="lead my-4">
+                    Page for Enroll , Update and Process Patient Detail </p>
+                    <button class="btn btn-primary btn-md" *ngIf="!isAuthenticated"><a routerLink="/auth" routerLinkActive="active" *ngIf="!isAuthenticated">Login</a></button> 
+                
+                
+                </div>
+                       </div>
+        </div>
+
+    
+</section>
+</body>
+
+
+<!-- 
+<section class="bg-primary text-light p-3">
+    <div class="container">
+        <div class="d-md-flex justify-center-between align-items-center">
+            <h3 class="mb-3 mb-md-0">Features</h3>
+            </div>
+    </div>
+</section> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<!--section class="vh-100 gradient-custom h-200">
+    <div class="container py-5 h-200 ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <header ><h1 class="text-center">Data Loader Portal</h1></header>
+                     <div class="mb-md-1 mt-md-4 pb-5 login-for">
+                        <p>Admin Portal</p>
+                        <div class="card bg-dark text-white text-center" style="border-radius:1 rem;">
+                        <div>
+                        <button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/add-patient" routerLinkActive="active" *ngIf="isAuthenticated">add-employee</a></button> </div>
+
+<div>                        <button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/update-details" routerLinkActive="active" *ngIf="isAuthenticated">update-details</a></button></div>
+<div><button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/process-details" routerLinkActive="active" *ngIf="isAuthenticated">Process details</a></button></div>
+<div><button class="btn btn-primary" *ngIf="!isAuthenticated"><a routerLink="/auth" routerLinkActive="active" *ngIf="!isAuthenticated">Login</a></button></div>
+<div><button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onLogout()"><a>Logout</a></button>
+
+</div> -->
+
+<!-- 
+<div class="section margin-section" id="section-1">
+    <div class="row">
+        <div class="col-xs-12 offset-md-2">
+            
+        </div>
+    </div>
+
+</div>
+
+
+
+<button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/add-patient" routerLinkActive="active" *ngIf="isAuthenticated">add-employee</a></button>
+<button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/update-details" routerLinkActive="active" *ngIf="isAuthenticated">update-details</a></button>
+<button class="btn btn-primary" *ngIf="isAuthenticated"><a routerLink="/username/process-details" routerLinkActive="active" *ngIf="isAuthenticated">Process details</a></button>
+<button class="btn btn-primary" *ngIf="!isAuthenticated"><a routerLink="/auth" routerLinkActive="active" *ngIf="!isAuthenticated">Login</a></button>
+<button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onLogout()"><a>Logout</a></button> -->

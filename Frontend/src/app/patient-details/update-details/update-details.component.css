@@ -1,0 +1,23 @@
+.update-form{
+
+    width: 340px;
+    margin: 20px auto;
+
+}
+
+.update-form form{
+    margin-bottom: 15px;
+    padding: 30px;
+
+}
+
+.inputfield{
+    margin-bottom: 15px;
+    padding: 30px;
+}
+.gradient-custom{
+    background:#f9f8fa;
+    height: 200;
+    
+    }
+    

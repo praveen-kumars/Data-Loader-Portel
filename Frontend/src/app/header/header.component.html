@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <div class="container">
+        <a href="#" class="navbar-brand">Patient Admin Portal</a>
+        
+        <button class="navbar-toggler" 
+                type="button" 
+                 data-bs-toggle="collapse"
+                 data-bs-target=".navmenu-collapse">
+                 <span class="navbar-toggler-icon"></span>
+        </button>        
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="nav navbar-nav ms-auto">
+                <li class="nav-item" >
+                    <a routerLink="/portal/Enroll" routerLinkActive="active" class="nav-link">Enroll</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/portal/Updation" routerLinkActive="active" class="nav-link">Update</a>
+                </li>
+                <li class="nav-item" >
+                    <a routerLink="/portal/Process" routerLinkActive="active" class="nav-link">Process</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated" (click)="onLogout()">
+                    <a class="nav-link">
+                    Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>  
+</nav>

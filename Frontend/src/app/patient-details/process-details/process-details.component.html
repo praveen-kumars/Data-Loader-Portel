@@ -1,0 +1,227 @@
+<nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top py-3">
+    <div class="container">
+        <!-- <a href="#" class="navbar-brand">Patient Admin Portal</a> -->
+        
+        <button class="navbar-toggler" 
+                type="button" 
+                 data-bs-toggle="collapse"
+                 data-bs-target=".navmenu-collapse">
+                 <span class="navbar-toggler-icon"></span>
+        </button>        
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="nav navbar-nav text-uppercase">
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/home" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/portal/Enroll" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Enroll</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/portal/Updation" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Update</a>
+                </li>
+            
+            </ul>
+            <ul class="nav navbar-nav ms-auto">
+                <li class="nav-item text-white" *ngIf="isAuthenticated" ><a aria-disabled="true" class="nav-link">
+                    {{username}}</a>
+            </li>
+                <button class="nav-item rounded-pill py-0 pt-0 my-0 bg-danger" *ngIf="isAuthenticated" (click)="onLogout()"><a class="nav-link">
+                    Logout</a>
+                </button>
+            
+            </ul>
+        </div>
+    </div>  
+</nav><br><br><br>
+<body class="vh-100 gradient-custom h-200">
+<section class="vh-100 gradient-custom h-200">
+    <div class="container py-5 h-200 ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 bis">
+                <header ><h1 class="text-center">Process Patient Details</h1></header>
+                <div class="card bg-dark text-white text-center" style="border-radius:1 rem;">
+                     <div class="mb-md-1 mt-md-4 pb-5 login-for">
+                        <!-- <h2 class="text-uppercase fw-bold mb-2 text-center">Process Patient Details</h2>
+                         -->
+                        <div class="container inputfield">
+                            <h4>Enter patient Name</h4>
+                            <br>
+                            <input type="text" name="patientName" #patientName id="patientName" placeholder="Enter patient name" [(ngModel)]="patientname" required >
+                            <br>
+                            <br>
+                            <button class="btn btn-primary" (click)="retrieve(patientName)">Find</button>
+                        </div>
+                        <form *ngIf="formactive && patient.patientName==patientname" #f="ngForm" (ngSubmit)="processDetails(f)" class="update-form" >
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="textbox" 
+                                class="form-control" 
+                                name="address" 
+                                [(ngModel)]="patient.patientAddress"
+                                #address="ngModel"
+                                disabled="true"
+                                value="{{patient.patientAddress}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="dateofbirth">Date of Birth</label>
+                                <input type="text" 
+                                class="form-control" 
+                                name="dateofbirth" 
+                                
+                                disabled="true"
+                                 value="{{patient.dateofbirth}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailid">Email Id</label>
+                                <input type="email" 
+                                class="form-control" 
+                                name="emailid"
+                                disabled="true"
+                                value="{{patient.patientEmail}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phonenumber">Mobile Number</label>
+                                <input type="number" 
+                                class="form-control" 
+                                name="phonenumber" 
+                                [(ngModel)]="patient.contactNumber"
+                                #phonenumber="ngModel"
+                                disabled="true"
+                                value="{{patient.contactNumber}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="drugid">Drug Id</label>
+                                <input type="text" 
+                                class="form-control" 
+                                name="drugid"
+                                disabled="true"
+                                value="{{patient.drugId}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="drugname">Drug Name</label>
+                                <input type="text" 
+                                class="form-control" 
+                                name="drugname" 
+                                disabled="true"
+                                value="{{patient.drugName}}">
+                            </div>
+                            <br>
+                            <button type="submit" class=" btn btn-primary">Process</button>
+                    
+                    
+                    
+                        </form>
+                        <span  class="alert alert-warning alert-dismissible fade show" role="alert"  *ngIf="Updatesuccess" style="height:5px,margin-left">
+                            <strong style="color:Red;">Data is successfully Processed</strong>
+                            <button (click)="removesuccessmessage1()" type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </span>
+                        <!-- <div class="alert alert-warning" *ngIf="setactive && data==false && patientname!=patient.patientName">No data found</div> -->
+                        <span  class="alert alert-warning alert-dismissible fade show" role="alert"  *ngIf="setactive && data==false && patientname!=patient.patientName" style="height:5px,margin-left">
+                            <strong style="color:Red;">No Data Found</strong>
+                            <button (click)="removesuccessmessage2()" type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </span>
+                       
+                       
+                        <!-- <ng-template #second>
+                            <div class="alert alert-warning" *ngIf="setactive">No data found</div>
+
+                        </ng-template> -->
+                        <!-- <div class="alert alert-warning" *ngIf="processed">Data is already processed</div> -->
+                        <span  class="alert alert-warning alert-dismissible fade show" role="alert"  *ngIf="processed" style="height:5px,margin-left">
+                        <strong style="color:Red;">Data is already Processed</strong>
+                        <button (click)="removesuccessmessage()" type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </span>
+                        <!-- <div class="alert alert-warning " *ngIf="Updatesuccess">Data is successfully Processed</div>
+                        <div class="alert alert-warning" *ngIf="setactive && data==false && patientname!=patient.patientName">No data found</div>
+                         <ng-template #second>
+                            <div class="alert alert-warning" *ngIf="setactive">No data found</div>
+
+                        </ng-template> -->
+                     <!--   <div class="alert alert-warning" *ngIf="processed">Data is already processed</div> -->
+                     
+                    </div>
+                    </div></div></div></div></section>
+
+
+
+</body>
+
+
+<!-- 
+
+
+
+
+<div class="back update-form">
+    <div class="container inputfield">
+        <h4>Enter patient Name</h4>
+        <input type="text" name="patientName" #patientName id="patientName" placeholder="Enter patient name" [(ngModel)]="patientname" required >
+        <br>
+        <button class="btn btn-primary" (click)="retrieve(patientName)">Find</button>
+    </div>
+    <form *ngIf="setactive" #f="ngForm" (ngSubmit)="processDetails()" >
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="textbox" 
+            class="form-control" 
+            name="address" 
+            [(ngModel)]="patient.patientAddress"
+            #address="ngModel"
+            disabled="true"
+            value="{{patient.patientAddress}}">
+        </div>
+        <div class="form-group">
+            <label for="dateofbirth">DOB</label>
+            <input type="text" 
+            class="form-control" 
+            name="dateofbirth" 
+            
+            disabled="true"
+             value="{{patient.dateofbirth}}">
+        </div>
+        <div class="form-group">
+            <label for="emailid">Email Id</label>
+            <input type="email" 
+            class="form-control" 
+            name="emailid"
+            disabled="true"
+            value="{{patient.patientEmail}}">
+        </div>
+        <div class="form-group">
+            <label for="phonenumber">Phone Number</label>
+            <input type="number" 
+            class="form-control" 
+            name="phonenumber" 
+            [(ngModel)]="patient.contactNumber"
+            #phonenumber="ngModel"
+            disabled="true"
+            value="{{patient.contactNumber}}">
+        </div>
+        <div class="form-group">
+            <label for="drugid">Drug Id</label>
+            <input type="text" 
+            class="form-control" 
+            name="drugid"
+            disabled="true"
+            value="{{patient.drugId}}">
+        </div>
+        <div class="form-group">
+            <label for="drugname">Drug Name</label>
+            <input type="text" 
+            class="form-control" 
+            name="drugname" 
+            disabled="true"
+            value="{{patient.drugName}}">
+        </div>
+        <button class="submit" >Update</button>
+
+
+
+    </form>
+</div> -->

@@ -1,0 +1,35 @@
+.gradient-custom{
+    background:#f3f2f5;
+    }
+    
+    
+.navmenu{
+    padding: 5%;
+    margin: 1%;
+}
+.add-form{
+    width: 340px;
+    margin: 50px auto;
+}
+
+.add-form form{
+    margin-bottom: 15px;
+    background: #bdb3b3;
+    padding: 30px;
+
+    
+}
+
+.add-form h2{
+    margin: 0 0 15px;
+}
+
+.add-form, .btn{
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.btn{
+    font-size: 15px;
+    font-weight: bold;
+}

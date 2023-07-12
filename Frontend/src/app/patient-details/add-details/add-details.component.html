@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg bg-success navbar-dark py-3 fixed-top">
+    <div class="container">
+        <!-- <a href="#" class="navbar-brand">Patient Admin Portal</a> -->
+        
+        <button class="navbar-toggler" 
+                type="button" 
+                 data-bs-toggle="collapse"
+                 data-bs-target=".navmenu-collapse">
+                 <span class="navbar-toggler-icon"></span>
+        </button>        
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="nav navbar-nav text-uppercase ">
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/home" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/portal/Updation" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Update</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a routerLink="/portal/Process" routerLinkActive="active" *ngIf="isAuthenticated" class="nav-link">Process</a>
+                </li>
+            
+            </ul>
+            <ul class="nav navbar-nav ms-auto">
+                <li class="nav-item text-white" *ngIf="isAuthenticated" ><a aria-disabled="true" class="nav-link">
+                    {{username}}</a>
+            </li>
+                <button class="nav-item rounded-pill py-0 pt-0 my-0 text-white bg-danger position-relative" *ngIf="isAuthenticated" (click)="onLogout()"><a class="nav-link">
+                    Logout</a>
+                </button>
+
+            </ul>
+        </div>
+    </div>  
+</nav>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <header ><h1 class="text-center">Patient Induction</h1></header>
+                <div class="card bg-dark text-white text-center" style="border-radius:1 rem;">
+                     <div class="mb-md-1 mt-md-4 pb-5 login-for">
+                        <form #f="ngForm" >
+                        <h4 class="text-uppercase fw-bold mb-2 text-center">Upload File</h4><br>
+                       
+                        
+                            <div class="heading">
+                                <h2 class="heading--highlight highlight"></h2>
+                            </div>
+                
+                            <label for="fileinput"></label>
+                            <input type="file" name="fileinput"  #fileinput style="display: inline-block;" (change)="incommingfile($event)" placeholder="uploadfile" [required]="true" accept=".xlsx">
+                            <div>
+                                <br>
+                            <button type="button" class="btn btn-info" (click)="Upload()">Upload</button>
+                           
+                            
+                        </div>
+                        </form>
+                        <div *ngIf="filesent">File Upload Successfull</div>
+                                           
+                        </div>
+                        </div></div>
+
+                        </div>
+                        </div>
+                        </section>
+
+
+<!-- <div class="back">
+    <div class="container add-form">
+        <form>
+            <div class="heading">
+                <h2 class="heading--highlight highlight">PatientInduction</h2>
+            </div>
+
+            <label for="fileinput"></label>
+            <input type="file" name="fileinput"  style="display: inline-block;" (change)="incommingfile($event)" placeholder="uploadfile" accept=".xlsx">
+            <div>
+            <button type="button" class="btn btn-info" (click)="Upload()">Upload</button>
+        </div>
+        </form>
+        
+    </div>
+</div> -->
